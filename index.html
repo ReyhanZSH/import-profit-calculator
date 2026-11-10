@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاسبه سود واردات کالا</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="phone-frame">
+      <!-- هدر -->
+      <header class="app-header">
+        <div class="header-text">
+          <h1 id="pageTitle">محاسبه سود واردات کالا</h1>
+          <p class="subtitle">برآورد سودآوری و ارزش واردات</p>
+        </div>
+      </header>
+
+      <!-- باکس دایره‌های مرحله -->
+      <div class="stepper-box">
+        <div class="stepper">
+          <div class="step step-1 active" id="step1">
+            <span class="step-circle">1</span>
+            <span class="step-label">محاسبه سود ناخالص</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step step-2" id="step2">
+            <span class="step-circle">2</span>
+            <span class="step-label">بررسی نهایی</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- صفحه اول: فرم ورودی -->
+      <section id="page-input" class="page">
+        <form id="profitForm" novalidate>
+          <div class="field">
+            <div class="field-header">
+              <label for="unitPrice">قیمت خرید کالا (هر واحد)</label>
+              <span class="field-icon">📦</span>
+            </div>
+            <input
+              type="number"
+              id="unitPrice"
+              name="unitPrice"
+              placeholder="0"
+              required
+              min="0"
+              step="any"
+            />
+          </div>
+
+          <div class="field">
+            <div class="field-header">
+              <label for="customs">هزینه گمرک و واردات</label>
+              <span class="field-icon">🏢</span>
+            </div>
+            <input
+              type="number"
+              id="customs"
+              name="customs"
+              placeholder="0"
+              required
+              min="0"
+              step="any"
+            />
+          </div>
+
+          <div class="field">
+            <div class="field-header">
+              <label for="shipping">هزینه‌های حمل و نقل (هر واحد)</label>
+              <span class="field-icon">🚚</span>
+            </div>
+            <input
+              type="number"
+              id="shipping"
+              name="shipping"
+              placeholder="0"
+              required
+              min="0"
+              step="any"
+            />
+          </div>
+
+          <div class="field">
+            <div class="field-header">
+              <label for="insurance">هزینه بیمه</label>
+              <span class="field-icon">🛡️</span>
+            </div>
+            <input
+              type="number"
+              id="insurance"
+              name="insurance"
+              placeholder="0"
+              required
+              min="0"
+              step="any"
+            />
+          </div>
+
+          <div class="field">
+            <div class="field-header">
+              <label for="sellPrice">قیمت فروش پیشنهادی (هر واحد)</label>
+              <span class="field-icon">🏷️</span>
+            </div>
+            <input
+              type="number"
+              id="sellPrice"
+              name="sellPrice"
+              placeholder="0"
+              required
+              min="0"
+              step="any"
+            />
+          </div>
+
+          <button type="submit" class="primary-btn" id="calcBtn">
+            <span>محاسبه سود ناخالص</span>
+            <span>🧮</span>
+          </button>
+        </form>
+
+        <!-- عکس کشتی (اینجا قرار می‌گیره) -->
+        <div class="ship-image-container">
+          <img
+            src="/images/Modern Persian Import Profit Calculator UI - Copy.png"
+            alt="کشتی"
+            class="ship-image-large"
+          />
+        </div>
+      </section>
+
+      <!-- صفحه دوم: نتایج (از اول مخفیه) -->
+      <section id="page-result" class="page d-none">
+        <div class="result-card">
+          <h2 class="result-title">📊 نتایج محاسبات</h2>
+
+          <div class="result-row">
+            <span class="result-label">بهای تمام شده واقعی</span>
+            <span class="result-value" id="resCost">$ 0</span>
+          </div>
+
+          <div class="result-row">
+            <span class="result-label">سود خالص</span>
+            <span class="result-value highlight" id="resProfit">$ 0</span>
+          </div>
+
+          <div class="result-row">
+            <span class="result-label">درصد حاشیه سود</span>
+            <span class="result-value" id="resMargin">0%</span>
+          </div>
+        </div>
+
+        <div id="statusCard" class="status-card">
+          <span class="status-icon" id="statusIcon">✓</span>
+          <div class="status-text">
+            <strong id="statusTitle">ارزش واردات دارد!</strong>
+            <p id="statusDesc">با توجه به شرایط، این واردات سودآور است.</p>
+          </div>
+        </div>
+
+        <button type="button" class="secondary-btn" id="restartBtn">
+          <span>محاسبه مجدد</span>
+          <span>🔄</span>
+        </button>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
